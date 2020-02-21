@@ -1,0 +1,103 @@
+int pushButton = 3;
+int ledPin = 2;
+int ledPin0 = 4;
+int ledPin1 = 5;
+int ledPin2 = 6;
+int ledPin3 = 7;
+
+boolean pressed = false;
+
+int counter = 0;
+
+// the setup routine runs once when you press reset:
+void setup() {
+  // initialize serial communication at 9600 bits per second:
+  Serial.begin(9600);
+  // make the pushbutton's pin an input:
+  pinMode(pushButton, INPUT);
+  pinMode(ledPin, OUTPUT);
+  pinMode(ledPin0, OUTPUT);
+  pinMode(ledPin1, OUTPUT);
+  pinMode(ledPin2, OUTPUT);
+  pinMode(ledPin3, OUTPUT);
+}
+
+// the loop routine runs over and over again forever:
+void loop() {
+  // read the input pin:
+  int buttonState = digitalRead(pushButton);
+  // print out the state of the button:
+  Serial.print("buttonState");// EITHER 1 OR 0
+  Serial.print(buttonState);
+  delay(1);                                   // delay in between reads for stability
+  //digitalWrite(ledpin,buttonState);                // VALUE FOR HIGH IS 1 VALUE FOR LOW = 0
+ 
+  if(buttonState == HIGH) {
+    pressed = true;
+    counter = counter + 1;
+  }
+
+//thiis only runs when the user hs pressed and released the button
+  if(buttonState == LOW & & pressed == true) {
+    pressed = false; 
+   
+  }
+  
+
+//if(counter == 0) {
+//    digitalWrite(ledpin, LOW); 
+//}else if(counter == 1) {
+//    digitalWrite(ledpin,HIGH);}
+ //else if(counter == 2) 
+ 
+ if(counter == 0) {
+    digitalWrite(ledPin0, LOW); 
+}else if(counter == 1) {
+    analogWrite(ledPin, 0);  // 0 is off
+  delay(500);
+  analogWrite(ledPin, 255);
+  delay(500);
+
+  analogWrite(ledPin0, 0);  // 0 is off
+  delay(500);
+  analogWrite(ledPin0, 255);
+  delay(500);
+
+analogWrite(ledPin1, 0);  // 0 is off
+  delay(500);
+  analogWrite(ledPin1, 255);
+  delay(500);
+
+  analogWrite(ledPin2, 0);  // 0 is off
+  delay(500);
+  analogWrite(ledPin2, 255);
+  delay(500);
+
+  analogWrite(ledPin3, 0);  // 0 is off
+  delay(500);
+  analogWrite(ledPin3, 255);
+  delay(500);
+
+  analogWrite(ledPin, 0);
+  delay(500);
+   analogWrite(ledPin0, 0);
+  delay(500);
+  analogWrite(ledPin1, 0);
+  delay(500);
+  analogWrite(ledPin2, 0);
+ delay(500);
+  analogWrite(ledPin3, 0);
+  delay(500);
+}
+ else if(counter == 2) 
+ 
+ 
+ {
+    //digitalWrite(ledpin,HIGH);
+   /// delay(1000); 
+   // digitalWrite(ledpin,LOW);
+   // delay(1000);
+//}else
+ 
+counter = 0;}
+ }
